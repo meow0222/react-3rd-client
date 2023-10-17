@@ -19,6 +19,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountMenu from './AccountMenu';
+import LandingPage from './LandingPage';
+
+
 
 const drawerWidth = 240;
 
@@ -87,7 +90,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MainFrame() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -130,7 +133,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Home', 'Dashboard', 'Chart'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -154,33 +157,10 @@ export default function MiniDrawer() {
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+        <DrawerHeader/>
+        <LandingPage/>
       </Box>
     </Box>
   );
