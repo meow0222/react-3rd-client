@@ -1,0 +1,17 @@
+.testContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin: 30px;
+    padding: 20px;
+    border: 0.5px solid black;
+    background-color: rgb(224, 224, 224);
+}
+
+.testContainer button {
+    width: 200px;
+}

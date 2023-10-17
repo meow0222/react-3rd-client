@@ -19,6 +19,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountMenu from './AccountMenu';
+import ServerTest from './ServerTest';
 
 const drawerWidth = 240;
 
@@ -208,6 +209,7 @@ export default function MiniDrawer() {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
+        <ServerTest></ServerTest>
       </Box>
     </Box>
   );
