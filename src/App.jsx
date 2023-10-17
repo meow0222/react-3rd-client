@@ -1,16 +1,13 @@
 // import { useState } from 'react'
 import React from 'react';
 import './App.css';
-import MiniDrawer from './components/MiniDrawer';
+import MainFrame from './components/MainFrame';
 
 function App() {
 
   return (
     <>
-    <MiniDrawer/>
-      <div>
-
-      </div>
+      <MainFrame/>
     </>
   );
 };
