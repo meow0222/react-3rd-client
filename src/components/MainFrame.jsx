@@ -22,8 +22,6 @@ import AccountMenu from './AccountMenu';
 import LandingPage from './LandingPage';
 import { ScoreResult } from './ScoreResult';
 
-
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -91,7 +89,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MainFrame() {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -134,7 +132,7 @@ export default function MainFrame() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Dashboard', 'Chart'].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
