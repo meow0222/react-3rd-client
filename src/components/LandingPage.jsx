@@ -3,9 +3,9 @@ import img from '../assets/track-img.png';
 
 const LandingPage = () => {
     return (
-        <>
-            <img src={img} alt="Landing page main image" />
-        </>
+        <div className='h-screen bg-contain bg-opacity-0 bg-no-repeat' style={{ backgroundImage: `url(${img})` }}>
+            
+        </div>
     )
 }
 
