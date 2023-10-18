@@ -19,9 +19,6 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountMenu from './AccountMenu';
-import LandingPage from './LandingPage';
-
-
 
 const drawerWidth = 240;
 
@@ -90,7 +87,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MainFrame() {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -106,7 +103,7 @@ export default function MainFrame() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -120,7 +117,7 @@ export default function MainFrame() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Bounty GP
+            Mini variant drawer
           </Typography>
           <AccountMenu/>
         </Toolbar>
@@ -133,7 +130,7 @@ export default function MainFrame() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Dashboard', 'Chart'].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
