@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountMenu from './AccountMenu';
 import LandingPage from './LandingPage';
+import { ScoreResult } from './ScoreResult';
 
 
 
@@ -161,6 +162,7 @@ export default function MainFrame() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader/>
         <LandingPage/>
+        <ScoreResult/>
       </Box>
     </Box>
   );

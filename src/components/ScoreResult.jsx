@@ -1,3 +1,4 @@
+import Table from "./Table";
 export function ScoreResult(){
     
     const getScore = () => {
@@ -9,6 +10,13 @@ export function ScoreResult(){
         })
     }
 
-    const colums = ["Name", "Score"];
+    const columns = ["Name", "Score"];
+    const data = ["soobeom", 42];
 
+    return (
+        <>
+            <Table columns={columns} data={data} />
+        </>
+    )
+            
 }
