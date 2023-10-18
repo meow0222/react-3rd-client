@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 export default function ServerTest() {
     function getStuff() {
-        axios.get("https://localhost:3000/racedata", {'task' : 'getStuff'})
+        axios.get("https://localhost:3000/racedata", {'task' : 'getStuff', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Content-Type",})
         .then((response) => {
             console.log(response);
         })
