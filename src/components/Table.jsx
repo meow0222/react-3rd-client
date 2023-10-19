@@ -10,10 +10,10 @@ function Table({ columns, data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map(({ name, score}) => (
-          <tr key={name + score}>
+        {data.map(({ name, points}) => (
+          <tr key={name + points}>
             <td>{name}</td>
-            <td>{score}</td>
+            <td>{points}</td>
           </tr>
         ))}
       </tbody>
