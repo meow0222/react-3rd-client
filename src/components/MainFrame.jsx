@@ -25,11 +25,8 @@ import MailIcon from '@mui/icons-material/Mail';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-
-import Dashboard from './Dashboard';
+import Dashboard from './DashBoard';
 import Home from './Home';
-
-
 import { ScoreResult } from './ScoreResult';
 
 
@@ -176,7 +173,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent' }}>
+      <AppBar position="fixed" open={open} sx={{ bgcolor: 'black' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
