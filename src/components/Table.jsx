@@ -11,7 +11,7 @@ function Table({ columns, data }) {
       </thead>
       <tbody>
         {data.map(({ name, score}) => (
-          <tr key={name + score}>
+          <tr key={score}>
             <td>{name}</td>
             <td>{score}</td>
           </tr>
