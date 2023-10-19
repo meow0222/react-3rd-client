@@ -4,9 +4,13 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 export default function ServerTest() {
     function getStuff() {
-        axios.get("https://localhost:3000/racedata", {'task' : 'getStuff'})
+        axios.get("http://localhost:3000/racedata", {
+            headers: {'task' : 'getStuff'},
+            responseType: "json"
+        })
         .then((response) => {
-            console.log(response);
+            const racer = response.data[2];
+            alert('Name: ' + racer.name + '\nPoints: ' + racer.points + '\nCar: ' + racer.car);
         })
     }
     return(
