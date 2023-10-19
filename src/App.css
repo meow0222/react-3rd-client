@@ -3,3 +3,24 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.car {
+    width: 5%;
+    transform: scaleX(-1);
+}
+
+#track {
+    padding-left: 5%;
+}
+
+Button {
+    position: absolute;
+    top: -280px;
+}
+
+@media(max-width: 600px){
+    #track{
+        rotate: -90deg;
+        width: 200%;
+    }
+}
