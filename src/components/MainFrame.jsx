@@ -25,8 +25,12 @@ import MailIcon from '@mui/icons-material/Mail';
 
 //Import from components
 import AccountMenu from './AccountMenu';
+
 import Dashboard from './Dashboard';
 import Home from './Home';
+
+import Dashboard from './DashBoard';
+
 import { ScoreResult } from './ScoreResult';
 
 
