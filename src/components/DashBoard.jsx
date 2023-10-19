@@ -7,7 +7,6 @@ import tank from '/cars/tank.png';
 import truck1 from '/cars/truck-1.png';
 import truck from '/cars/truck.png';
 import axios from 'axios';
-import Button from '@mui/material/Button';
 
 
 const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck];
@@ -26,7 +25,7 @@ const Dashboard = () => {
         for(let i = 0; i < riders.length; i++){
           let img = document.createElement('img');
           img.setAttribute('src', `${localImageUrls[riders[i].car]}`);
-          img.setAttribute('style', `margin-left: ${riders[i].points * constant}%;`)
+          img.setAttribute('style', `margin-left: ${riders[i].points * constant}% `)
           img.setAttribute('alt', `${riders[i].car}`);
           track.appendChild(img);
           console.log(`appending ${riders[i].name}'s ${riders[i].carname} with ${riders[i].points * constant}% margin`)
