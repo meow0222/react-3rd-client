@@ -89,6 +89,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+import carBlack from '/cars/car-black.png';
+import carRed from '/cars/car-red.png';
+import policeCar from '/cars/police.png';
+import tank from '/cars/tank.png';
+import truck1 from '/cars/truck-1.png';
+import truck from '/cars/truck.png';
+import axios from 'axios';
+import Button from '@mui/material/Button';
+
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -100,6 +109,38 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck];
+  function loadCars() {
+    var constant = 0;
+    axios.get("http://localhost:3000/racedata", {
+        headers: {'task' : 'getStuff'},
+        responseType: "json"
+    })
+    .then((response) => {
+      const track = document.getElementById('track');
+      const riders = response.data;
+      track.innerHTML = '';
+      var x = 10;
+      for(let i = 0; i < riders.length; i++){
+        if(riders[i].points > x){
+          x = riders[i].points;
+          constant = 100 / x;
+          console.log(x);
+        }
+      }
+      console.log('constant: ' + constant);
+      for(let i = 0; i < riders.length; i++){
+        let img = document.createElement('img');
+        img.setAttribute('src', `${localImageUrls[riders[i].car]}`);
+        img.setAttribute('style', `margin-left: calc(${riders[i].points * constant}% - 70px);`)
+        img.setAttribute('alt', `${riders[i].car}`);
+        img.setAttribute('class', 'car');
+        track.appendChild(img);
+        console.log(`appending ${riders[i].name}'s ${riders[i].carname} with ${riders[i].points * constant}% margin`)
+      }
+    })
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -159,7 +200,9 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader/>
-        <Dashboard/>
+        <Dashboard onClick={loadCars}/>
+        <Button onClick={loadCars} variant="contained">Load Cars</Button>
+
         <ScoreResult/>
       </Box>
     </Box>
