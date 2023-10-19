@@ -1,5 +1,9 @@
+//REACT
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import { Routes, Route, Link } from 'react-router-dom';
+
+//MUI
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -18,9 +22,32 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
+//Import from components
 import AccountMenu from './AccountMenu';
 import Dashboard from './Dashboard';
+import Home from './Home';
 import { ScoreResult } from './ScoreResult';
+
+
+
+
+// This is MUI. Please go to <component="main"> on the bottom.
+
+
+
+
+
+
+// Please execute the Http request(GET) in this component.
+
+
+
+
+
+
+
+
 
 const drawerWidth = 240;
 
@@ -72,6 +99,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
@@ -104,7 +132,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
@@ -121,7 +149,15 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap component="div">
             Bounty GP
           </Typography>
+
+        {/* ---------------------------------- Account Menu component ---------------------------------- */}
+
           <AccountMenu/>
+
+        {/* -------------------------------------------------------------------------------------------- */}
+
+
+
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -132,9 +168,15 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Dashboard', 'Chart'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {[
+            { text: 'Home', path: '/'},
+            { text: 'Dashboard', path: './DashBoard'},
+            { text: 'Chart', path: './Chart'}
+          ].map((link, index) => (
+            <ListItem key={link.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                component={Link}
+                to={link.path}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -150,18 +192,25 @@ export default function MiniDrawer() {
                 >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={link.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
         <Divider />
       </Drawer>
+
+      {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader/>
-        <Dashboard/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard/>} />   
+        </Routes>
         <ScoreResult/>
       </Box>
+      {/* ------------------------------------------------------------------------------------------------------------ */}
+
     </Box>
   );
 }
