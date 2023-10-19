@@ -1,21 +1,18 @@
 import Table from "./Table";
+import { InputScore } from "./InputScore";
 export function ScoreResult(){
-    
-    const getScore = () => {
-        fetch("http://localhost:9000/score", {
-            method: 'get',
-            headers : {
-                "task" : 'getScore'
-            },
-        })
-    }
-
     const columns = ["Name", "Score"];
-    const data = ["soobeom", 42];
+    const data = Array(1)
+    .fill()
+    .map(() => ({
+      name: 'soobeom',
+      score: 32,
+    }));
 
     return (
         <>
             <Table columns={columns} data={data} />
+            <InputScore />
         </>
     )
             
