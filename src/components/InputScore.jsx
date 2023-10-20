@@ -1,7 +1,28 @@
+import React, { useState } from "react";
 export function InputScore(){
     function selectChange() {
         let select = document.getElementById('studentName');
 
+    }
+
+    const [arr,setArr] = useState([])
+    const getScore = () => {
+        console.log('btn clicked');
+        fetch("http://localhost:3000/score", {
+            method: 'get',
+            headers : {
+                "task" : 'getScore'
+            },
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            for (let i=0; i< result.length; i++){
+                console.log('go');
+                setArr([...arr, {'name': `${result[i].name}`, 'points': `${result[i].points}`}]);
+                console.log(arr);
+            }
+        })
     }
 
     const updateScore = () => {
@@ -17,28 +38,6 @@ export function InputScore(){
         })
     }
 
-    const getScore = () => {
-        console.log('btn clicked');
-        fetch("http://localhost:3000/score", {
-            method: 'get',
-            headers : {
-                "task" : 'getScore'
-            },
-        })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-            console.log(result.length);
-            const data = Array(result.length)
-            .fill()
-            .map((arr, i) => ({
-                name : result[i].name,
-                points : result[i].points
-            }));
-            console.log(data);
-        })
-
-    }
     
 
     return(

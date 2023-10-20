@@ -13,10 +13,6 @@
     padding-left: 5%;
 }
 
-Button {
-    position: absolute;
-    top: -280px;
-}
 
 @media(max-width: 600px){
     #track{

@@ -1,7 +1,10 @@
 import Table from "./Table";
 import { InputScore } from "./InputScore";
+import React, { useState } from "react";
+
+
 export function ScoreResult(){
-    var data;
+    const [arr,setArr] = useState([])
     const getScore = () => {
         console.log('btn clicked');
         fetch("http://localhost:3000/score", {
@@ -12,23 +15,27 @@ export function ScoreResult(){
         })
         .then(res => res.json())
         .then(result => {
-            data = Array(result.length)
-            .fill()
-            .map((arr, i) => ({
-                name : result[i].name,
-                points : result[i].points
-            }));
+            console.log(result);
+            for (let i=0; i< result.length; i++){
+                console.log('go');
+                let item = {"name": result[i].name,
+                        "points": result[i].points}
+                console.log(item);
+                setArr([...arr, item]);
+                console.log(arr);
+            }
         })
-
     }
 
     const columns = ["Name", "Points"];
-    getScore();
-    console.log(data);
+    
+    console.log('now : ',arr);
     return (
         <>
-            <Table columns={columns} data={data} />
+            <Table />
             <InputScore />
+            <br></br>
+            <button onClick={getScore}>Click</button>
         </>
     )
             
