@@ -5,12 +5,34 @@
 }
 
 .car {
-    width: 5%;
+    width: auto;
     transform: scaleX(-1);
 }
 
 #track {
     padding-left: 5%;
+}
+
+.tooltip{
+    width: 5%;
+    display: block;
+}
+
+.tooltip:hover {
+    .ttText{
+        display: block;
+    }
+}
+
+.ttText {
+    display: none;
+    position: absolute;
+    width: fit-content;
+    height: auto;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 80%;
 }
 
 Button {
