@@ -1,6 +1,6 @@
 //REACT
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { duration, styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
 
 //MUI
@@ -25,6 +25,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 //Import from components
 import AccountMenu from './AccountMenu';
+
 import Dashboard from './DashBoard';
 import Home from './Home';
 import { ScoreResult } from './ScoreResult';
@@ -123,6 +124,7 @@ import policeCar from '/cars/police.png';
 import tank from '/cars/tank.png';
 import truck1 from '/cars/truck-1.png';
 import truck from '/cars/truck.png';
+import ambulance from '/cars/ambulance.png'
 import axios from 'axios';
 import Button from '@mui/material/Button';
 
@@ -138,9 +140,8 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck];
+  const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck, ambulance];
   function loadCars() {
-    var constant = 0;
     axios.get("http://localhost:3000/racedata", {
         headers: {'task' : 'getStuff'},
         responseType: "json"
@@ -149,22 +150,34 @@ export default function MiniDrawer() {
       const track = document.getElementById('track');
       const riders = response.data;
       track.innerHTML = '';
-      var x = 10;
+      var maxpoint = -Infinity;
       for(let i = 0; i < riders.length; i++){
-        if(riders[i].points > x){
-          x = riders[i].points;
-          constant = 100 / x;
-          console.log(x);
+        if(riders[i].points > maxpoint && riders[i].points > 10){
+          maxpoint = riders[i].points;
         }
       }
+      const constant = 100 / maxpoint;
       console.log('constant: ' + constant);
       for(let i = 0; i < riders.length; i++){
         let img = document.createElement('img');
+        let tooltip = document.createElement('div');
+        let txt = document.createElement('p');
+
         img.setAttribute('src', `${localImageUrls[riders[i].car]}`);
-        img.setAttribute('style', `margin-left: calc(${riders[i].points * constant}% - 70px);`)
         img.setAttribute('alt', `${riders[i].car}`);
+
+        tooltip.setAttribute('style', `margin-left: calc(${riders[i].points * constant}% - 70px);`)
+        //txt.setAttribute('style', `left: calc(${riders[i].points * 2.8}%);`)
+        //img.animate([{ marginLeft: "auto" }, { marginLeft: `calc(${riders[i].points * constant}% - 70px)` }], {duration: 500, iterations: 1});
+        txt.innerHTML = `Name: ${riders[i].name};\nCar: ${riders[i].carname};\nScore: ${riders[i].points}`
+
         img.setAttribute('class', 'car');
-        track.appendChild(img);
+        tooltip.setAttribute('class', 'tooltip');
+        txt.setAttribute('class', 'ttText');
+
+        tooltip.appendChild(img);
+        tooltip.appendChild(txt);
+        track.appendChild(tooltip);
         console.log(`appending ${riders[i].name}'s ${riders[i].carname} with ${riders[i].points * constant}% margin`)
       }
     })
@@ -223,6 +236,7 @@ export default function MiniDrawer() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={loadCars}
               >
                 <ListItemIcon
                   sx={{
@@ -243,9 +257,9 @@ export default function MiniDrawer() {
 
       {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader/>
-        <Dashboard onClick={loadCars}/>
-        <Button onClick={loadCars} variant="contained">Load Cars</Button>
+        <DrawerHeader />
+        {/* <Dashboard onClick={loadCars}/> */}
+        {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="dashboard" element={<Dashboard/>} />   
