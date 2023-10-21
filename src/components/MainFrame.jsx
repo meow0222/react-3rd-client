@@ -9,9 +9,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -28,7 +26,7 @@ import AccountMenu from './AccountMenu';
 
 import Dashboard from './DashBoard';
 import Home from './Home';
-import { ScoreResult } from './ScoreResult';
+// import { ScoreResult } from './ScoreResult';
 
 
 
@@ -118,6 +116,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
 import carBlack from '/cars/car-black.png';
 import carRed from '/cars/car-red.png';
 import policeCar from '/cars/police.png';
@@ -127,6 +126,7 @@ import truck from '/cars/truck.png';
 import ambulance from '/cars/ambulance.png'
 import axios from 'axios';
 import Button from '@mui/material/Button';
+
 
 export default function MiniDrawer() {
   const theme = useTheme();
@@ -139,6 +139,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
 
   const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck, ambulance];
   function loadCars() {
@@ -184,9 +185,8 @@ export default function MiniDrawer() {
   }
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ bgcolor: 'black' }}>
+    <Box sx={{ display: 'flex', bgcolor: 'transparent' }}>
+      <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent',  boxShadow: 0 }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
@@ -194,14 +194,14 @@ export default function MiniDrawer() {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
+              bgcolor: 'black',
               marginRight: 5,
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon />
+          <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Bounty GP
+          <Typography className='text-black' variant="h6" noWrap component="div">
           </Typography>
 
         {/* ---------------------------------- Account Menu component ---------------------------------- */}
@@ -214,20 +214,19 @@ export default function MiniDrawer() {
 
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+      <Drawer variant="permanent" open={open} sx={{bgcolor: 'transparent'}}>
+        <DrawerHeader sx={{bgcolor: 'transparent'}}>
+          <IconButton className='bg-black' onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
+        <List  >
           {[
             { text: 'Home', path: '/'},
             { text: 'Dashboard', path: './DashBoard'},
             { text: 'Chart', path: './Chart'}
           ].map((link, index) => (
-            <ListItem key={link.text} disablePadding sx={{ display: 'block' }}>
+            <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
                 component={Link}
                 to={link.path}
@@ -252,19 +251,20 @@ export default function MiniDrawer() {
             </ListItem>
           ))}
         </List>
-        <Divider />
       </Drawer>
 
       {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
+
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {/* <Dashboard onClick={loadCars}/> */}
         {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
+
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
         </Routes>
-        <ScoreResult/>
+        {/* <ScoreResult/> */}
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
 
