@@ -14,7 +14,7 @@
 }
 
 
-.tooltip{
+/* .tooltip{
     width: 5%;
     display: block;
 }
@@ -39,7 +39,7 @@
 Button {
     position: absolute;
     top: -280px;
-}
+} */
 
 
 @media(max-width: 600px){

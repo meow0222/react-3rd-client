@@ -125,7 +125,6 @@ import truck1 from '/cars/truck-1.png';
 import truck from '/cars/truck.png';
 import ambulance from '/cars/ambulance.png'
 import axios from 'axios';
-import Button from '@mui/material/Button';
 
 
 export default function MiniDrawer() {
@@ -255,11 +254,9 @@ export default function MiniDrawer() {
 
       {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box component="main" sx={{ flexGrow: 1 }}>
         {/* <Dashboard onClick={loadCars}/> */}
         {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
-
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
