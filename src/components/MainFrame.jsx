@@ -20,6 +20,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import {InputScore} from './InputScore';
 
 //Import from components
 import AccountMenu from './AccountMenu';
@@ -27,27 +28,8 @@ import AccountMenu from './AccountMenu';
 import Dashboard from './DashBoard';
 import Home from './Home';
 // import { ScoreResult } from './ScoreResult';
-
-
-
-
 // This is MUI. Please go to <component="main"> on the bottom.
-
-
-
-
-
-
 // Please execute the Http request(GET) in this component.
-
-
-
-
-
-
-
-
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -260,6 +242,8 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
+          <Route path='inputscore' element={<InputScore/>} />
+          {/* <Route path='scoreresult' element={<ScoreResult/>} /> */}
         </Routes>
         {/* <ScoreResult/> */}
       </Box>

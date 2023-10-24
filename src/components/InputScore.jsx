@@ -1,8 +1,22 @@
-export function InputScore(){
-    function selectChange() {
-        let select = document.getElementById('studentName');
+import axios from "axios";
 
-    }
+export function InputScore(){
+    // function selectChange() {
+    //     let select = document.getElementById('studentName');
+
+    // }
+
+    addEventListener('load', () => {
+        function loadCars() {
+            axios.get("http://localhost:3000/racedata", {
+                headers: {'task' : 'getStuff'},
+                responseType: "json"
+            })
+            .then((response) => {
+
+            })
+        }
+    });
 
     const updateScore = () => {
         fetch("http://localhost:3000/score", {
