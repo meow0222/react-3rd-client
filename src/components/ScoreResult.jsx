@@ -6,6 +6,7 @@ import StudentList from './StudentList';
 import CreateStudent from './CreateStudent';
 import InputScore from './InputScore';
 import { input } from '@material-tailwind/react';
+import { ClassNames } from '@emotion/react';
 
 export function ScoreResult() {
     const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
@@ -30,11 +31,12 @@ export function ScoreResult() {
     }, []);
 
 
-
-    return (
-        <>
-            <StudentList serverData={serverData} />
-            <CreateStudent serverData={serverData}/>
-        </>
-    );
+ 
+  return (
+  <div className='mt-16'>
+    <StudentList serverData={serverData}/>
+    <CreateStudent serverData={serverData}/>
+    <InputScore />
+  </div>
+  );
 }

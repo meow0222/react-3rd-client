@@ -11,8 +11,12 @@
 
 #track {
     padding-left: 5%;
-    margin-top: 60px;
+    margin-top: 80px;
+    margin: 20px;
+    margin-bottom: 50px;
     height: fit-content;
+    background: repeat-y center center;
+    background-size: cover;
 }
 
 
