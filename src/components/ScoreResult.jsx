@@ -1,42 +1,52 @@
-import Table from "./Table";
-import { InputScore } from "./InputScore";
-import React, { useState } from "react";
-
+import {useRef, useState, useEffect} from 'react';
+import CreateUser from './CreateUser';
+import UserList from './UserList';
+import  Table from './StudentList';
+import StudentList from './StudentList';
+import CreateStudent from './CreateStudent';
 
 export function ScoreResult(){
-    const [arr,setArr] = useState([])
-    const getScore = () => {
-        console.log('btn clicked');
-        fetch("http://localhost:3000/score", {
-            method: 'get',
-            headers : {
-                "task" : 'getScore'
-            },
-        })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result);
-            for (let i=0; i< result.length; i++){
-                console.log('go');
-                let item = {"name": result[i].name,
-                        "points": result[i].points}
-                console.log(item);
-                setArr([...arr, item]);
-                console.log(arr);
-            }
-        })
-    }
+    const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
 
-    const columns = ["Name", "Points"];
-    
-    console.log('now : ',arr);
-    return (
-        <>
-            <Table />
-            <InputScore />
-            <br></br>
-            <button onClick={getScore}>Click</button>
-        </>
-    )
-            
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+  })
+
+  const {username, email} = inputs;
+  const onChange = e => {
+    const {name, value} = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    })
+  }
+ 
+
+useEffect(() => {
+    // 서버에서 데이터를 가져오는 비동기 요청을 수행
+    fetch("http://localhost:3000/score", {
+        method: 'get',
+        headers : {
+            "task" : 'getScore'
+        },
+    })
+      .then(response => response.json())
+      .then(data => {
+        // 서버에서 받아온 데이터를 로컬 상태에 설정
+        setServerData(data);
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 에러 발생:', error);
+      });
+  }, []);
+
+
+ 
+  return (
+  <>
+    <StudentList serverData={serverData}/>
+    <CreateStudent serverData={serverData}/>
+  </>
+  );
 }

@@ -1,0 +1,13 @@
+.blank {
+    height:30px;
+    width:30px;
+    background-color: antiquewhite;
+}
+select {
+    margin-top:130px;
+    display: block;
+}
+
+input {
+    border: 2px solid black;
+}

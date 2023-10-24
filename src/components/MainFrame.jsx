@@ -244,7 +244,6 @@ export default function MiniDrawer() {
       {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader/>
-        <Button onClick={loadCars} variant="contained">Load Cars</Button>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="dashboard" element={<Dashboard/>} />   
