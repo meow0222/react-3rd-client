@@ -110,6 +110,7 @@ import axios from 'axios';
 
 
 export default function MiniDrawer() {
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -120,8 +121,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-
+  
   const localImageUrls = [carBlack, carRed, policeCar, tank, truck1, truck, ambulance];
   function loadCars() {
     axios.get("http://localhost:3000/racedata", {

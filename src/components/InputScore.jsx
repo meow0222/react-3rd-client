@@ -1,4 +1,5 @@
 import axios from "axios";
+import AccountMenu from "./AccountMenu";
 
 export default function InputScore() {
     // function selectChange() {
