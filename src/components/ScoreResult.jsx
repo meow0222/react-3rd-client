@@ -4,6 +4,7 @@ import UserList from './UserList';
 import  Table from './StudentList';
 import StudentList from './StudentList';
 import CreateStudent from './CreateStudent';
+import InputScore from './InputScore';
 
 export function ScoreResult(){
     const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
@@ -47,6 +48,7 @@ useEffect(() => {
   <>
     <StudentList serverData={serverData}/>
     <CreateStudent serverData={serverData}/>
+    <InputScore />
   </>
   );
 }

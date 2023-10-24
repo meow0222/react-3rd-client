@@ -20,7 +20,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import {InputScore} from './InputScore';
 import { ScoreResult } from './ScoreResult';
 
 //Import from components
@@ -166,6 +165,24 @@ export default function MiniDrawer() {
     })
   }
 
+  function loadUsers() {
+    axios.get("http://localhost:3000/racedata", {
+        headers: { 'task': 'getStuff' },
+        responseType: "json"
+    })
+    .then((response) => {
+        const riders = response.data;
+        const selectStudent = document.getElementById('studentName');
+        for (let i = 0; i < riders.length; i++) {
+            let option = document.createElement('option');
+            option.setAttribute('key', `${i}`);
+            option.setAttribute('value', `${riders[i].name}`);
+            option.innerHTML = riders[i].name;
+            selectStudent.appendChild(option);
+        }
+    })
+  }
+
   return (
     <Box sx={{ display: 'flex', bgcolor: 'transparent' }}>
       <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent',  boxShadow: 0 }}>
@@ -204,9 +221,9 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <List  >
           {[
-            { text: 'Home', path: '/'},
-            { text: 'Dashboard', path: './DashBoard'},
-            { text: 'Chart', path: './Chart'}
+            { text: 'Home', path: '/', load: ''},
+            { text: 'Dashboard', path: './DashBoard', load: loadCars},
+            { text: 'chart', path: 'Chart'}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -217,7 +234,7 @@ export default function MiniDrawer() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                onClick={loadCars}
+                onClick={() => link.load()}
               >
                 <ListItemIcon
                   sx={{
