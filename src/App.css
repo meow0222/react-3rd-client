@@ -25,10 +25,10 @@
     display: block;
 }
 
-.tooltip:hover {
-    .ttText{
-        display: block;
-    }
+.tooltip:hover .ttText{
+    
+    display: block;
+    
 }
 
 .ttText {

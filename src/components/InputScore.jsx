@@ -1,7 +1,7 @@
 import axios from "axios";
 import AccountMenu from "./AccountMenu";
 
-export function InputScore() {
+export default function InputScore() {
     // function selectChange() {
     //     let select = document.getElementById('studentName');
 

@@ -20,7 +20,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import {InputScore} from './InputScore';
+import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
@@ -223,7 +223,7 @@ export default function MiniDrawer() {
           {[
             { text: 'Home', path: '/', load: ''},
             { text: 'Dashboard', path: './DashBoard', load: loadCars},
-            { text: 'Update Score', path: './inputscore', load: loadUsers}
+            { text: 'chart', path: 'Chart'}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -234,7 +234,7 @@ export default function MiniDrawer() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                onClick={link.load}
+                onClick={() => link.load()}
               >
                 <ListItemIcon
                   sx={{
@@ -260,10 +260,8 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
-          <Route path='inputscore' element={<InputScore/>} />
-          {/* <Route path='scoreresult' element={<ScoreResult/>} /> */}
+          <Route path="chart" element={<ScoreResult/>} />
         </Routes>
-        {/* <ScoreResult/> */}
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
 
