@@ -1,6 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/shmup-in-the-zone');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,26 +8,31 @@
 
 #bgp {
     display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
 }
 
-#bgp h1 {
+#bgp h1, .flag-img{
     font-family: 'SHMUP in the zone', sans-serif;
     font-size: 4vw;
     font-weight: 900;
-    color: white;
-    animation: glowing 2s linear infinite alternate;
-    margin-top: -50vh;
+    color: #333;
+    margin-bottom: 16rem;
 }
 
-#bgp img {
-    width: 6vw;
-    height: auto;
+.main-img {
+    animation-name: ani;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    filter: drop-shadow(5px 5px 5px #aaa);
 }
 
+@keyframes ani {
+    0% {
+        transform: translate(0,0px);
+    }
 
-/* @keyframes glowing {
-    from {box-shadow: 0px 0px 100px 10px #fff;}
-    to { box-shadow: 0px 0px 140px 20px #fff;}
-}  */
+    100% {
+        transform: translate(0,-15px)
+    }
+}

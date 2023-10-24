@@ -5,6 +5,7 @@ import  Table from './StudentList';
 import StudentList from './StudentList';
 import CreateStudent from './CreateStudent';
 import InputScore from './InputScore';
+import { ClassNames } from '@emotion/react';
 
 export function ScoreResult(){
     const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
@@ -45,10 +46,10 @@ useEffect(() => {
 
  
   return (
-  <>
+  <div className='mt-16'>
     <StudentList serverData={serverData}/>
     <CreateStudent serverData={serverData}/>
     <InputScore />
-  </>
+  </div>
   );
 }
