@@ -1,9 +1,22 @@
-import React, { useState } from "react";
-export function InputScore(){
-    function selectChange() {
-        let select = document.getElementById('studentName');
+import axios from "axios";
 
-    }
+export function InputScore(){
+    // function selectChange() {
+    //     let select = document.getElementById('studentName');
+
+    // }
+
+    addEventListener('load', () => {
+        function loadCars() {
+            axios.get("http://localhost:3000/racedata", {
+                headers: {'task' : 'getStuff'},
+                responseType: "json"
+            })
+            .then((response) => {
+
+            })
+        }
+    });
 
     const [arr,setArr] = useState([])
     const getScore = () => {

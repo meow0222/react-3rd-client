@@ -18,5 +18,10 @@ export default function ServerTest() {
             <Button variant="outlined">Update TS</Button>
             <Button onClick={getStuff} variant="contained">Get TS</Button>
         </div>
+        // <img
+        // src={`http://10.0.0.184:5000/data/imgs/${user}profile.jpg`}
+        // alt="profile"
+        // className="w-16 rounded-full"
+        // />
     )
 }
