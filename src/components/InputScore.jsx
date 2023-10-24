@@ -1,28 +1,16 @@
 import axios from "axios";
 
-export function InputScore(){
+export function InputScore() {
     // function selectChange() {
     //     let select = document.getElementById('studentName');
 
     // }
 
-    addEventListener('load', () => {
-        function loadCars() {
-            axios.get("http://localhost:3000/racedata", {
-                headers: {'task' : 'getStuff'},
-                responseType: "json"
-            })
-            .then((response) => {
-
-            })
-        }
-    });
-
     const updateScore = () => {
         fetch("http://localhost:3000/score", {
             method: 'POST',
-            headers : {
-                "task" : 'updateScore'
+            headers: {
+                "task": 'updateScore'
             },
             body: JSON.stringify({
                 name: "Test",
@@ -35,37 +23,33 @@ export function InputScore(){
         console.log('btn clicked');
         fetch("http://localhost:3000/score", {
             method: 'get',
-            headers : {
-                "task" : 'getScore'
+            headers: {
+                "task": 'getScore'
             },
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-            console.log(result.length);
-            const data = Array(result.length)
-            .fill()
-            .map((arr, i) => ({
-                name : result[i].name,
-                points : result[i].points
-            }));
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                console.log(result.length);
+                const data = Array(result.length)
+                    .fill()
+                    .map((arr, i) => ({
+                        name: result[i].name,
+                        points: result[i].points
+                    }));
+                console.log(data);
+            })
 
     }
-    
 
-    return(
-        <>
-        <select id='studentName'>
-			<option key="name1" value="name1">name1</option>
-			<option key="name2" value="name2">name2</option>
-			<option key="name4" value="name3">name3</option>
-		</select>
-        <input name="name" placeholder="Name"></input>
-        <input name="score" placeholder="Score"></input>
-        <button id="addBtn" onClick={getScore}>GET</button>
-        <button id="updateBtn" onClick={updateScore}>UPDATE</button>
-        </>
+
+    return (
+        <div id="update">
+            <select className="p-1" id='studentName'>
+            </select>
+            <input name="score" placeholder="Score"></input>
+            {/* <button id="addBtn" onClick={getScore}>GET</button> */}
+            <button id="updateBtn" onClick={updateScore}>UPDATE</button>
+        </div>
     )
 }
