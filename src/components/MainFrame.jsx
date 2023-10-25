@@ -1,6 +1,6 @@
 //REACT
 import * as React from 'react';
-import { duration, styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
 
 //MUI
@@ -24,8 +24,7 @@ import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-
-import Dashboard from './DashBoard';
+import DashBoard from './DashBoard';
 import Home from './Home';
 // import { ScoreResult } from './ScoreResult';
 // This is MUI. Please go to <component="main"> on the bottom.
@@ -133,8 +132,9 @@ export default function MiniDrawer() {
       const riders = response.data;
       track.innerHTML = '';
       var maxpoint = -Infinity;
+      console.log(riders);
       for(let i = 0; i < riders.length; i++){
-        if(riders[i].points > maxpoint && riders[i].points > 10){
+        if(riders[i].points > maxpoint){
           maxpoint = riders[i].points;
         }
       }
@@ -222,7 +222,7 @@ export default function MiniDrawer() {
         <List  >
           {[
             { text: 'Home', path: '/', load: ''},
-            { text: 'Dashboard', path: './DashBoard', load: loadCars},
+            { text: 'Dashboard', path: './DashBoard', load: loadCars}
             // { text: 'chart', path: 'Chart', load: loadUsers}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
@@ -260,7 +260,7 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
-          <Route path="fdbjlndhngbhsodbgjas" element={<ScoreResult />} />
+          <Route path="fdbjlndhngbhsodbgjas" element={<ScoreResult />} /> 
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
