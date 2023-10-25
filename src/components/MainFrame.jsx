@@ -18,16 +18,22 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
 import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
 import DashBoard from './DashBoard';
 import Home from './Home';
-// import { ScoreResult } from './ScoreResult';
+
+
+
+
+
 // This is MUI. Please go to <component="main"> on the bottom.
+
+
+
 // Please execute the Http request(GET) in this component.
 const drawerWidth = 240;
 
@@ -97,14 +103,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-
+//import images
 import carBlack from '/cars/car-black.png';
 import carRed from '/cars/car-red.png';
 import policeCar from '/cars/police.png';
 import tank from '/cars/tank.png';
 import truck1 from '/cars/truck-1.png';
 import truck from '/cars/truck.png';
-import ambulance from '/cars/ambulance.png'
+import ambulance from '/cars/ambulance.png';
+import flag from '/checkerflag.png';
+import home from '/home.png';
+
+
+
+
 import axios from 'axios';
 
 
@@ -134,7 +146,7 @@ export default function MiniDrawer() {
       var maxpoint = -Infinity;
       console.log(riders);
       for(let i = 0; i < riders.length; i++){
-        if(riders[i].points > maxpoint){
+        if(riders[i].points > maxpoint && riders[i].points > 10){
           maxpoint = riders[i].points;
         }
       }
@@ -165,25 +177,11 @@ export default function MiniDrawer() {
     })
   }
 
-  function loadUsers() {
-    axios.get("http://localhost:3000/racedata", {
-        headers: { 'task': 'getStuff' },
-        responseType: "json"
-    })
-    .then((response) => {
-        const riders = response.data;
-        const selectStudent = document.getElementById('studentName');
-        for (let i = 0; i < riders.length; i++) {
-            let option = document.createElement('option');
-            option.setAttribute('key', `${i}`);
-            option.setAttribute('value', `${riders[i].name}`);
-            option.innerHTML = riders[i].name;
-            selectStudent.appendChild(option);
-        }
-    })
-  }
+
 
   return (
+
+
     <Box sx={{ display: 'flex', bgcolor: 'transparent' }}>
       <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent',  boxShadow: 0 }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -243,7 +241,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <img src={home} alt="Home Icon" /> : <img src={flag} alt="Flag Icon" />}
                 </ListItemIcon>
                 <ListItemText primary={link.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -255,8 +253,6 @@ export default function MiniDrawer() {
       {/* ------------------------ Here is our main section, you can put & render components. ------------------------ */}
 
       <Box component="main" sx={{ flexGrow: 1 }}>
-        {/* <Dashboard onClick={loadCars}/> */}
-        {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/dashboard" element={<DashBoard />} />   

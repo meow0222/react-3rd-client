@@ -16,8 +16,8 @@ const Home = () => {
                     <h2>Bounty GP</h2>
                     <div className='flex items-center'>
                         <img className='r-arrow' src={arrowImg} alt="right arrow image"/>
-                        <Link to='/dashboard'> {/* Dashboardページへのリンク */}
-                            <button className='h2-btn'>Go to Dashboard</button>
+                        <Link to='/chart'>
+                            <button className='h2-btn'>Go to Chart</button>
                         </Link>
 
                     </div>
