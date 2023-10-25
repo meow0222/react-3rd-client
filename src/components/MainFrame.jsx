@@ -260,7 +260,7 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
-          <Route path="chart" element={<ScoreResult/>} />
+          <Route path="chart" element={<ScoreResult/>} login />
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
