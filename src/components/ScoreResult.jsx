@@ -1,16 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
-import CreateUser from './CreateUser';
-import UserList from './UserList';
-import Table from './StudentList';
+import { useState, useEffect } from 'react';
 import StudentList from './StudentList';
 import CreateStudent from './CreateStudent';
-import InputScore from './InputScore';
-import { input } from '@material-tailwind/react';
-import { ClassNames } from '@emotion/react';
 
 export function ScoreResult() {
     const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
-
 
     useEffect(() => {
         // 서버에서 데이터를 가져오는 비동기 요청을 수행
@@ -35,8 +28,8 @@ export function ScoreResult() {
   return (
   <div className='mt-16'>
     <StudentList serverData={serverData}/>
-    <CreateStudent serverData={serverData}/>
-    <InputScore />
+    <CreateStudent serverData = {serverData}
+                   setServerData = {setServerData} />
   </div>
   );
 }
