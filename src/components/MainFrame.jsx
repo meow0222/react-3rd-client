@@ -1,6 +1,6 @@
 //REACT
 import * as React from 'react';
-import { duration, styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
 
 //MUI
@@ -24,8 +24,7 @@ import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-
-import Dashboard from './DashBoard';
+import DashBoard from './DashBoard';
 import Home from './Home';
 // import { ScoreResult } from './ScoreResult';
 // This is MUI. Please go to <component="main"> on the bottom.
@@ -222,9 +221,9 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <List  >
           {[
-            { text: 'Home', path: '/', load: ''},
-            { text: 'Dashboard', path: './DashBoard', load: loadCars},
-            { text: 'chart', path: 'Chart'}
+            { text: 'Home', path: '/home', load: loadCars},
+            { text: 'Dashboard', path: '/dashboard', load: loadCars},
+            { text: 'Chart', path: '/chart', load: loadCars}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -259,9 +258,9 @@ export default function MiniDrawer() {
         {/* <Dashboard onClick={loadCars}/> */}
         {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="dashboard" element={<Dashboard/>} />   
-          <Route path="chart" element={<ScoreResult/>} login />
+          <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<DashBoard />} />   
+          <Route path="/chart" element={<ScoreResult />} /> 
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
