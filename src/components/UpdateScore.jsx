@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import '../styles/CreateStudent.css'
 
-function CreateStudent({ serverData,setServerData }) {
+function UpdateScore({ serverData,setServerData }) {
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('Gabriel');
 
@@ -53,4 +53,4 @@ function CreateStudent({ serverData,setServerData }) {
     )
 }
 
-export default CreateStudent;
+export default UpdateScore;
