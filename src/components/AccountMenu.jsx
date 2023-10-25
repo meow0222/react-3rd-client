@@ -12,17 +12,27 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { Login } from '@mui/icons-material';
+import { Routes, Route } from 'react-router-dom';
+import { ScoreResult } from './ScoreResult';
+import { ListItemButton } from '@mui/material';
 
 
 export default function AccountMenu() {
   const password = 'admin';
   const [authed, setAuthed] = React.useState(false);
   function handleLogin() {
-    if(document.getElementById('admPw').value === password){
+    if (document.getElementById('admPw').value === password) {
       setAuthed(true);
       alert("Welcome in, Mr. Admin!")
-    }else{
-      alert("Wrong Password!")
+    } else if(document.getElementById('admPw').value === '01100100 01101111 01110101 01100111 01100001 01101100 00100000 01101001 01110011 00100000 01100001 01110111 01100101 01110011 01101111 01101101 01100101'){
+      alert("++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++++++++++++++.>++++.-------.+++++++++++++.---.++++++++.<<++.>>-------------.+++++++++.+++.<<.>>-------------.+++++++++++++++++.<+++++++++++++++++.>----.+++++++.-----.<+++.+.+++++.-------.<.>-----------------------------------.>-----.++++++.--------------.------.+++++++++++.<<+....-.>++++.>-------.+++++++++++++.-------------.<<+++++++.>>++++++++++++++.<<-------.>>.----.--.--------.+++++++++++++++.------------.+.+++++.-------.<<.>>-.+++++++++.+++.<<.>>+++++++.----------.++++++.<<+...");
+      setTimeout(() => {
+        alert('https://www.youtube.com/watch?v=xvFZjo5PgG0');
+        //not sus
+      }, 3000);
+    }
+    else {
+      alert("Wrong Password!");
     }
   }
   function handleLogout() {
@@ -38,7 +48,7 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
 
-  if(authed === false){
+  if (authed === false) {
     return (
       <React.Fragment>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -92,14 +102,14 @@ export default function AccountMenu() {
           <MenuItem>
             <input id='admPw' className='p-1' type='password' placeholder='admin password' />
           </MenuItem>
-          <Divider/>
+          <Divider />
           <MenuItem onClick={handleLogin}>
-            Login <Login /> 
+            Login <Login />
           </MenuItem>
         </Menu>
       </React.Fragment>
-    );  
-  }else {
+    );
+  } else {
     return (
       <React.Fragment>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -153,8 +163,12 @@ export default function AccountMenu() {
           <MenuItem onClick={handleLogout}>
             Logout <Logout />
           </MenuItem>
+          <MenuItem>
+            <ListItemButton to={'fdbjlndhngbhsodbgjas'}>Chart</ListItemButton>
+          </MenuItem>
         </Menu>
       </React.Fragment>
-    );  
+
+    );
   }
 }

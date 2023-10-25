@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import StudentList from './StudentList';
+import CreateStudent from './CreateStudent';
+import AccountMenu from './AccountMenu';
+import { Routes } from 'react-router-dom';
 import UpdateScore from './UpdateScore';
 
 export function ScoreResult() {
@@ -24,12 +27,14 @@ export function ScoreResult() {
     }, []);
 
 
- 
+
   return (
   <div className='mt-16'>
     <StudentList serverData={serverData}/>
     <UpdateScore serverData = {serverData}
                    setServerData = {setServerData} />
   </div>
+  
   );
+  
 }

@@ -221,9 +221,9 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <List  >
           {[
-            { text: 'Home', path: '/home', load: loadCars},
-            { text: 'Dashboard', path: '/dashboard', load: loadCars},
-            { text: 'Chart', path: '/chart', load: loadCars}
+            { text: 'Home', path: '/', load: ''},
+            { text: 'Dashboard', path: './DashBoard', load: loadCars}
+            // { text: 'chart', path: 'Chart', load: loadUsers}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -258,9 +258,9 @@ export default function MiniDrawer() {
         {/* <Dashboard onClick={loadCars}/> */}
         {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/dashboard" element={<DashBoard />} />   
-          <Route path="/chart" element={<ScoreResult />} /> 
+          <Route path="/" element={<Home/>} />
+          <Route path="dashboard" element={<Dashboard/>} />   
+          <Route path="fdbjlndhngbhsodbgjas" element={<ScoreResult />} /> 
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
