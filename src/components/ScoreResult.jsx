@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import StudentList from './StudentList';
 import CreateStudent from './CreateStudent';
+import AccountMenu from './AccountMenu';
+import { Routes } from 'react-router-dom';
 
 export function ScoreResult() {
     const [serverData, setServerData] = useState([]); // 빈 배열로 초기화
@@ -24,12 +26,14 @@ export function ScoreResult() {
     }, []);
 
 
- 
+
   return (
   <div className='mt-16'>
     <StudentList serverData={serverData}/>
     <CreateStudent serverData = {serverData}
                    setServerData = {setServerData} />
   </div>
+  
   );
+  
 }

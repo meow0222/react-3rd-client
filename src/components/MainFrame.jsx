@@ -223,7 +223,7 @@ export default function MiniDrawer() {
           {[
             { text: 'Home', path: '/', load: ''},
             { text: 'Dashboard', path: './DashBoard', load: loadCars},
-            { text: 'chart', path: 'Chart'}
+            // { text: 'chart', path: 'Chart', load: loadUsers}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -260,7 +260,7 @@ export default function MiniDrawer() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="dashboard" element={<Dashboard/>} />   
-          <Route path="chart" element={<ScoreResult/>} login />
+          <Route path="fdbjlndhngbhsodbgjas" element={<ScoreResult />} />
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}

@@ -11,7 +11,7 @@
 
 #track {
     padding-left: 5%;
-    margin-top: 80px;
+    transform: translateY(10%);
     margin: 20px;
     margin-bottom: 50px;
     height: fit-content;
