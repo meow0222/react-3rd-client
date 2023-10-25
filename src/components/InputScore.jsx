@@ -1,7 +1,7 @@
 import axios from "axios";
 import AccountMenu from "./AccountMenu";
 
-export default function InputScore() {
+export function InputScore() {
     // function selectChange() {
     //     let select = document.getElementById('studentName');
 
@@ -47,6 +47,9 @@ export default function InputScore() {
     return (
         <div id="update">
             <select className="p-1" id='studentName'>
+            {serverData.map((data) => (
+                    <option key={data.name} value={data.name}>{data.name}</option>
+                ))}
             </select>
             <input name="score" placeholder="Score"></input>
             {/* <button id="addBtn" onClick={getScore}>GET</button> */}
