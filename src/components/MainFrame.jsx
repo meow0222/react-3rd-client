@@ -133,8 +133,9 @@ export default function MiniDrawer() {
       const riders = response.data;
       track.innerHTML = '';
       var maxpoint = -Infinity;
+      console.log(riders);
       for(let i = 0; i < riders.length; i++){
-        if(riders[i].points > maxpoint && riders[i].points > 10){
+        if(riders[i].points > maxpoint){
           maxpoint = riders[i].points;
         }
       }

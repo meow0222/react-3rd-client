@@ -35,7 +35,7 @@ function UpdateScore({ serverData,setServerData }) {
             .catch(error => {
                 console.error('Server Error:', error);
             });
-        
+        alert("update the score");
     };
 
     return (
