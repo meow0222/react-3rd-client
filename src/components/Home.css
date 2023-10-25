@@ -4,18 +4,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'SHMUP in the zone', sans-serif;
 }
 
 #bgp {
     display: flex;
 }
 
-#bgp h1, .flag-img{
-    font-family: 'SHMUP in the zone', sans-serif;
+#bgp h2, .flag-img{
     font-size: 4vw;
     font-weight: 900;
-    color: #333;
-    margin-bottom: 16rem;
+    color: #FFF;
+    margin-bottom: 10rem;
+    text-shadow: 10px 10px 10px #000;
+}
+
+.flag-img {
+    width: 5%;
+}
+
+.h2-btn {
+    font-size: 1.5rem;
+    color: #FFF;
+
 }
 
 .main-img {
@@ -36,3 +47,28 @@
         transform: translate(0,-15px)
     }
 }
+
+
+.r-arrow {
+    width: 2rem;
+    margin-right: 8px;
+    -webkit-animation:blink 0.5s ease-in-out infinite alternate;
+    -moz-animation:blink 0.5s ease-in-out infinite alternate;
+    animation:blink 0.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+

@@ -1,20 +1,31 @@
-import flagImg from '/flag.png'
+import flagImg from '/flag.png';
 import './Home.css';
-import bgImg from '/main-img.png'
+import mainImg from '/main-img.png';
+import bgImg from '/bg-car.gif';
+import arrowImg from '/arrow.png';
+
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
     return (
-        <>
-            <section id='bgp' className='m-0 p-0 box-border flex items-center justify-center z-10 h-screen'> 
-                <img className='flag-img h-10 mx-6' src={flagImg} alt="Image of chacker flag" />
-                <h1>Bounty GP</h1>
-                <img className='main-img' src={bgImg} alt="Image of red formula car" />
+        <div className='relative h-screen bg-no-repeat bg-cover' style={{ backgroundImage:`url(${bgImg})` }}>
+            <section id='bgp' className='m-0 pt-16 box-border flex items-center justify-center z-10'  > 
+                <img className='flag-img pb-8 mx-4' src={flagImg} alt="Image of chacker flag" />
+                <div className='flex flex-col items-center'>
+                    <h2>Bounty GP</h2>
+                    <div className='flex items-center'>
+                        <img className='r-arrow' src={arrowImg} alt="right arrow image"/>
+                        <Link to='/dashboard'> {/* Dashboardページへのリンク */}
+                            <button className='h2-btn'>Go to Dashboard</button>
+                        </Link>
+
+                    </div>
+                </div>
+                <img className='flag-img pb-8 mx-4' src={flagImg} alt="Image of chacker flag" />
+                <img className='main-img' src={mainImg} alt="Image of red formula car" />
             </section>
-            <section>
-                
-            </section>
-        </>
+        </div>
     )
     
 }
