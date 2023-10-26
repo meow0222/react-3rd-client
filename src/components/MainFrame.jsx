@@ -1,7 +1,6 @@
 //REACT
 import * as React from 'react';
-import {useState} from 'react';
-import { duration, styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
 //MUI
 import Box from '@mui/material/Box';
@@ -19,21 +18,20 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-
 import helloContext from './admin';
-
 import Dashboard from './DashBoard';
 import Home from './Home';
+import { ScoreResult } from './ScoreResult';
 
 
 
 
 
 // This is MUI. Please go to <component="main"> on the bottom.
+
 
 
 
@@ -106,6 +104,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
+
 //import images
 import carBlack from '/cars/car-black.png';
 import carRed from '/cars/car-red.png';
@@ -165,8 +165,7 @@ export default function MiniDrawer() {
         img.setAttribute('alt', `${riders[i].car}`);
 
         tooltip.setAttribute('style', `margin-left: calc(${riders[i].points * constant}% - 70px);`)
-        //txt.setAttribute('style', `left: calc(${riders[i].points * 2.8}%);`)
-        //img.animate([{ marginLeft: "auto" }, { marginLeft: `calc(${riders[i].points * constant}% - 70px)` }], {duration: 500, iterations: 1});
+        
         txt.innerHTML = `Name: ${riders[i].name};\nCar: ${riders[i].carname};\nScore: ${riders[i].points}`
 
         img.setAttribute('class', 'car');
@@ -220,7 +219,7 @@ export default function MiniDrawer() {
         <DrawerHeader sx={{bgcolor: 'transparent'}}>
           <IconButton className='bg-black' onClick={handleDrawerClose}>
           <helloContext.Consumer >
-            {value => <h1 className='greetingText'>{value}</h1>} 
+            {value => <h1 className='greetingText text-sm pr-8'>{value}</h1>} 
             {/* prints: Reed */}
           </helloContext.Consumer>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -231,7 +230,7 @@ export default function MiniDrawer() {
             { text: 'Home', path: '/', load: loadCars, icon: home },
             { text: 'Dashboard', path: '/dashboard', load: loadCars, icon: flag },
             { text: 'Chart', path: '/chart', load: loadCars, icon: chart }
-          ].map((link, index) => (
+          ].map((link) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
                 component={Link}
