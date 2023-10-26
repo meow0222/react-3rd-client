@@ -113,7 +113,7 @@ import truck from '/cars/truck.png';
 import ambulance from '/cars/ambulance.png';
 import flag from '/checkerflag.png';
 import home from '/home.png';
-
+import chart from '/chart.png';
 
 
 
@@ -217,11 +217,11 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <List  >
+        <List>
           {[
-            { text: 'Home', path: '/home', load: loadCars},
-            { text: 'Dashboard', path: '/dashboard', load: loadCars},
-            { text: 'Chart', path: '/chart', load: loadCars}
+            { text: 'Home', path: '/home', load: loadCars, icon: home },
+            { text: 'Dashboard', path: '/dashboard', load: loadCars, icon: flag },
+            { text: 'Chart', path: '/chart', load: loadCars, icon: chart }
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -241,7 +241,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <img src={home} alt="Home Icon" /> : <img src={flag} alt="Flag Icon" />}
+                  <img className='drawer-icon' src={link.icon} alt={`${link.text} Icon`} />
                 </ListItemIcon>
                 <ListItemText primary={link.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

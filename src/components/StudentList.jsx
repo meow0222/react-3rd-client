@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import './StudentList.css'
 
 function Data({data}){
     const { name,points,car,carname , id} = data;
@@ -20,31 +21,31 @@ function Data({data}){
 function StudentList({serverData}) {
     
     return (
-        <>
-        <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Student Name</TableCell>
-            <TableCell >Points</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {serverData.map((data) => (
-            <TableRow
-              key={data.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {data.name}
-              </TableCell>
-              <TableCell >{data.points}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-        </>
+      <>
+        <TableContainer component={Paper} sx={{ width: '80vw', ml: '10px'}}>
+          <Table sx={{ width: '80vw' }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className='table' sx={{ textAlign: 'center'}}>Student Name</TableCell>
+                <TableCell className='table' sx={{ textAlign: 'center'}}>Points</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {serverData.map((data) => (
+                <TableRow
+                  key={data.name}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell className='table' sx={{ textAlign: 'center', py: 0 }} component="th" scope="row">
+                    {data.name}
+                  </TableCell>
+                  <TableCell className='table' sx={{ textAlign: 'center'}} >{data.points}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </>
     )
 }
  

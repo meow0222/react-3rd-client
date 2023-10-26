@@ -26,10 +26,11 @@ export function ScoreResult() {
 
  
   return (
-  <div className='mt-16'>
+  <div className='w-full'>
+      <h1 className='p-6 text-3xl'> Current Bounty Graph </h1>
     <StudentList serverData={serverData}/>
     <UpdateScore serverData = {serverData}
-                   setServerData = {setServerData} />
+    setServerData = {setServerData} />
   </div>
   );
 }

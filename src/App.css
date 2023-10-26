@@ -10,10 +10,6 @@
 }
 
 #track {
-    padding-left: 5%;
-    margin-top: 80px;
-    margin: 20px;
-    margin-bottom: 50px;
     height: fit-content;
     background: repeat-y center center;
     background-size: cover;
@@ -44,19 +40,28 @@
 }
 
 #update {
+    position: absolute;
+    bottom: 4rem;
+    right: 2rem;
     display: flex;
     flex-direction: column;
     width: fit-content;
     gap: 20px;
-    margin-top: 10vh;
-    margin-left: 3vw;
     padding: 20px;
     box-shadow: 3px 3px 1px 5px #696969;
+    margin-left: 12px;
+    margin-top: 2rem;
 }
 
 #update input {
     text-align: center;
 }
+
+
+.drawer-icon {
+    width: 2rem;
+}
+
 
 
 /* Button {
@@ -66,8 +71,16 @@
 
 
 @media(max-width: 600px){
+
     #track{
+        margin-top: 14rem;
+        padding-left: 0;
         rotate: -90deg;
-        width: 200%;
+        width: 80vw;
+        background-repeat: no-repeat;
+    }
+
+    .car {
+        margin-left: 2rem;
     }
 }

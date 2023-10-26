@@ -11,7 +11,7 @@
     display: flex;
 }
 
-#bgp h2, .flag-img{
+#bgp h1, .flag-img{
     font-size: 4vw;
     font-weight: 900;
     color: #FFF;
@@ -71,4 +71,27 @@
 }
 
 
+@media(max-width: 900px){
 
+    .title-sec {
+        flex-direction: column;
+        z-index: 1;
+        gap: 5rem;
+        padding-top: 13rem;
+    }
+
+    #bgp {
+        flex-direction: column;
+    }
+
+    .main-img {
+        position: absolute;
+        width: 230px;
+        z-index: 0;
+        top: 10rem;
+    }
+
+    .flag-img {
+        display: none;
+    }
+}

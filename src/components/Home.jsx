@@ -12,8 +12,8 @@ const Home = () => {
         <div className='relative h-screen bg-no-repeat bg-cover' style={{ backgroundImage:`url(${bgImg})` }}>
             <section id='bgp' className='m-0 pt-16 box-border flex items-center justify-center z-10'  > 
                 <img className='flag-img pb-8 mx-4' src={flagImg} alt="Image of chacker flag" />
-                <div className='flex flex-col items-center'>
-                    <h2>Bounty GP</h2>
+                <div className='title-sec flex flex-col items-center'>
+                    <h1>Bounty GP</h1>
                     <div className='flex items-center'>
                         <img className='r-arrow' src={arrowImg} alt="right arrow image"/>
                         <Link to='/chart'>
