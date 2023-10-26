@@ -3,11 +3,10 @@ import './Home.css';
 import mainImg from '/main-img.png';
 import bgImg from '/bg-car.gif';
 import arrowImg from '/arrow.png';
-
 import { Link } from 'react-router-dom';
 
 
-const Home = (loadCars) => {
+const Home = () => {
     return (
         <div className='relative h-screen bg-no-repeat bg-cover' style={{ backgroundImage:`url(${bgImg})` }}>
             <section id='bgp' className='m-0 pt-16 box-border flex items-center justify-center z-10'  > 
@@ -19,7 +18,6 @@ const Home = (loadCars) => {
                         <Link to='/chart'>
                             <button className='h2-btn'>Go to Chart</button>
                         </Link>
-
                     </div>
                 </div>
                 <img className='flag-img pb-8 mx-4' src={flagImg} alt="Image of chacker flag" />

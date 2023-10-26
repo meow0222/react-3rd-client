@@ -68,11 +68,6 @@
 
 
 
-/* Button {
-    position: absolute;
-    top: -280px;
-} */ 
-
 
 @media(max-width: 600px){
 
@@ -85,6 +80,11 @@
     }
 
     .car {
-        margin-left: 2rem;
+        margin-left: 3rem;
+    }
+
+    #update {
+        position: static;
+        margin-bottom: 2rem;
     }
 }
