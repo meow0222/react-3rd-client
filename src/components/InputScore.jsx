@@ -45,7 +45,7 @@ export function InputScore() {
 
 
     return (
-        <div id="update">
+        <section id="update">
             <select className="p-1" id='studentName'>
             {serverData.map((data) => (
                     <option key={data.name} value={data.name}>{data.name}</option>
@@ -54,6 +54,6 @@ export function InputScore() {
             <input name="score" placeholder="Score"></input>
             {/* <button id="addBtn" onClick={getScore}>GET</button> */}
             <button id="updateBtn" onClick={updateScore}>UPDATE</button>
-        </div>
+        </section>
     )
 }

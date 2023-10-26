@@ -13,5 +13,5 @@ Currently, two official plugins are available:
 This is a pasonal project that showcases how to build a web site by using REACT. 
 This project showcases "semantic HTML5", "CSS library(tailwind)", "ES6 JavaScript", "REACT", "REACT Framework(vite)", "RestAPI", and "SPA(single-page-application)".
 
-People involved in this project: Gabriel, Soobeom, Mao
+involved in this project by: Gabriel, Soobeom, Mao
 
