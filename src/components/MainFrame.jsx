@@ -228,7 +228,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <List>
           {[
-            { text: 'Home', path: '/home', load: loadCars, icon: home },
+            { text: 'Home', path: '/', load: loadCars, icon: home },
             { text: 'Dashboard', path: '/dashboard', load: loadCars, icon: flag },
             { text: 'Chart', path: '/chart', load: loadCars, icon: chart }
           ].map((link, index) => (

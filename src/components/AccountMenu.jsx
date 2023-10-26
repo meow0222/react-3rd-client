@@ -16,10 +16,12 @@ import { DocumentScannerTwoTone, Login } from '@mui/icons-material';
 
 export default function AccountMenu({setLogin}) {
   const password = 'admin';
-  const [authed, setAuthed] = React.useState(false);
+  const [authed, setAuthed] = React.useState(sessionStorage.getItem('authed'));
+  
   function handleLogin() {
     if(document.getElementById('admPw').value === password){
       setAuthed(true);
+      window.sessionStorage.setItem('authed',true)
       alert("Welcome in, Mr. Dougal!")
       document.getElementsByClassName('greetingText')[0].setAttribute('style','display:block');
       setLogin(true);
@@ -29,8 +31,10 @@ export default function AccountMenu({setLogin}) {
   }
   function handleLogout() {
     setLogin(false);
-    document.getElementsByClassName('greetingText')[0].setAttribute('style','display:none');
     setAuthed(false);
+    console.log(authed);
+    window.sessionStorage.setItem('authed', false);
+    document.getElementsByClassName('greetingText')[0].setAttribute('style','display:none');
   }
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,7 +46,8 @@ export default function AccountMenu({setLogin}) {
     setAnchorEl(null);
   };
 
-  if(authed === false){
+  if(window.sessionStorage.getItem('authed') === false){
+    
     return (
       <React.Fragment>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
