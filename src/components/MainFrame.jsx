@@ -1,8 +1,8 @@
 //REACT
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import {useState} from 'react';
+import { duration, styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
-
 //MUI
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -23,7 +23,10 @@ import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-import DashBoard from './DashBoard';
+
+import helloContext from './admin';
+
+import Dashboard from './DashBoard';
 import Home from './Home';
 
 
@@ -120,11 +123,13 @@ import chart from '/chart.png';
 import axios from 'axios';
 
 
+
 export default function MiniDrawer() {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [login, setLogin] = React.useState(false);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -144,7 +149,6 @@ export default function MiniDrawer() {
       const riders = response.data;
       track.innerHTML = '';
       var maxpoint = -Infinity;
-      console.log(riders);
       for(let i = 0; i < riders.length; i++){
         if(riders[i].points > maxpoint && riders[i].points > 10){
           maxpoint = riders[i].points;
@@ -179,6 +183,7 @@ export default function MiniDrawer() {
 
 
 
+
   return (
 
 
@@ -203,7 +208,7 @@ export default function MiniDrawer() {
 
         {/* ---------------------------------- Account Menu component ---------------------------------- */}
 
-          <AccountMenu/>
+          <AccountMenu setLogin={setLogin}/>
 
         {/* -------------------------------------------------------------------------------------------- */}
 
@@ -214,6 +219,10 @@ export default function MiniDrawer() {
       <Drawer variant="permanent" open={open} sx={{bgcolor: 'transparent'}}>
         <DrawerHeader sx={{bgcolor: 'transparent'}}>
           <IconButton className='bg-black' onClick={handleDrawerClose}>
+          <helloContext.Consumer >
+            {value => <h1 className='greetingText'>{value}</h1>} 
+            {/* prints: Reed */}
+          </helloContext.Consumer>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
@@ -254,9 +263,9 @@ export default function MiniDrawer() {
 
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/dashboard" element={<DashBoard />} />   
-          <Route path="/chart" element={<ScoreResult />} /> 
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard/>} />   
+          <Route path="chart" element={<ScoreResult login={login}/>} login />
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}
