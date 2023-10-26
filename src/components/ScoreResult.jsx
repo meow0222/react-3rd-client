@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import StudentList from './StudentList';
 import UpdateScore from './UpdateScore';
 
-export function ScoreResult() {
+export function ScoreResult({login}) {
     const [serverData, setServerData] = useState([]); // Reset the array
-
+    console.log(login)
     useEffect(() => {
         // Get Data from Server
         fetch("http://localhost:3000/score", {
@@ -28,8 +28,8 @@ export function ScoreResult() {
   return (
   <div className='mt-16'>
     <StudentList serverData={serverData}/>
-    <UpdateScore serverData = {serverData}
-                   setServerData = {setServerData} />
+    {login && <UpdateScore serverData = {serverData}
+                   setServerData = {setServerData} />}
   </div>
   );
 }

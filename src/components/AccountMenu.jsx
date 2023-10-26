@@ -11,21 +11,25 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { Login } from '@mui/icons-material';
+import { DocumentScannerTwoTone, Login } from '@mui/icons-material';
 
 
-export default function AccountMenu() {
+export default function AccountMenu({setLogin}) {
   const password = 'admin';
   const [authed, setAuthed] = React.useState(false);
   function handleLogin() {
     if(document.getElementById('admPw').value === password){
       setAuthed(true);
-      alert("Welcome in, Mr. Admin!")
+      alert("Welcome in, Mr. Dougal!")
+      document.getElementsByClassName('greetingText')[0].setAttribute('style','display:block');
+      setLogin(true);
     }else{
       alert("Wrong Password!")
     }
   }
   function handleLogout() {
+    setLogin(false);
+    document.getElementsByClassName('greetingText')[0].setAttribute('style','display:none');
     setAuthed(false);
   }
 

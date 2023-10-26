@@ -1,8 +1,8 @@
 //REACT
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import {useState} from 'react';
+import { duration, styled, useTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from 'react-router-dom';
-
 //MUI
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -24,7 +24,10 @@ import { ScoreResult } from './ScoreResult';
 
 //Import from components
 import AccountMenu from './AccountMenu';
-import DashBoard from './DashBoard';
+
+import helloContext from './admin';
+
+import Dashboard from './DashBoard';
 import Home from './Home';
 // import { ScoreResult } from './ScoreResult';
 // This is MUI. Please go to <component="main"> on the bottom.
@@ -108,11 +111,13 @@ import ambulance from '/cars/ambulance.png'
 import axios from 'axios';
 
 
+
 export default function MiniDrawer() {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [login, setLogin] = React.useState(false);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -132,9 +137,8 @@ export default function MiniDrawer() {
       const riders = response.data;
       track.innerHTML = '';
       var maxpoint = -Infinity;
-      console.log(riders);
       for(let i = 0; i < riders.length; i++){
-        if(riders[i].points > maxpoint){
+        if(riders[i].points > maxpoint && riders[i].points > 10){
           maxpoint = riders[i].points;
         }
       }
@@ -183,6 +187,7 @@ export default function MiniDrawer() {
     })
   }
 
+
   return (
     <Box sx={{ display: 'flex', bgcolor: 'transparent' }}>
       <AppBar position="fixed" open={open} sx={{ bgcolor: 'transparent',  boxShadow: 0 }}>
@@ -205,7 +210,7 @@ export default function MiniDrawer() {
 
         {/* ---------------------------------- Account Menu component ---------------------------------- */}
 
-          <AccountMenu/>
+          <AccountMenu setLogin={setLogin}/>
 
         {/* -------------------------------------------------------------------------------------------- */}
 
@@ -216,14 +221,18 @@ export default function MiniDrawer() {
       <Drawer variant="permanent" open={open} sx={{bgcolor: 'transparent'}}>
         <DrawerHeader sx={{bgcolor: 'transparent'}}>
           <IconButton className='bg-black' onClick={handleDrawerClose}>
+          <helloContext.Consumer >
+            {value => <h1 className='greetingText'>{value}</h1>} 
+            {/* prints: Reed */}
+          </helloContext.Consumer>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <List  >
           {[
-            { text: 'Home', path: '/home', load: loadCars},
-            { text: 'Dashboard', path: '/dashboard', load: loadCars},
-            { text: 'Chart', path: '/chart', load: loadCars}
+            { text: 'Home', path: '/', load: loadCars},
+            { text: 'Dashboard', path: './DashBoard', load: loadCars},
+            { text: 'chart', path: 'Chart', load: loadCars}
           ].map((link, index) => (
             <ListItem key={link.text} disablePadding sx={{ display: 'block'}}>
               <ListItemButton
@@ -258,9 +267,9 @@ export default function MiniDrawer() {
         {/* <Dashboard onClick={loadCars}/> */}
         {/* <Button onClick={loadCars} variant="contained">Load Cars</Button> */}
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/dashboard" element={<DashBoard />} />   
-          <Route path="/chart" element={<ScoreResult />} /> 
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard/>} />   
+          <Route path="chart" element={<ScoreResult login={login}/>} login />
         </Routes>
       </Box>
       {/* ------------------------------------------------------------------------------------------------------------ */}

@@ -19,6 +19,10 @@
     background-size: cover;
 }
 
+.greetingText {
+    display:none;
+}
+
 
 .tooltip{
     width: 5%;

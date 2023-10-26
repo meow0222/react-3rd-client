@@ -7,7 +7,7 @@ import arrowImg from '/arrow.png';
 import { Link } from 'react-router-dom';
 
 
-const Home = () => {
+const Home = (loadCars) => {
     return (
         <div className='relative h-screen bg-no-repeat bg-cover' style={{ backgroundImage:`url(${bgImg})` }}>
             <section id='bgp' className='m-0 pt-16 box-border flex items-center justify-center z-10'  > 
