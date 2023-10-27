@@ -1,35 +1,35 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { Login } from '@mui/icons-material';
+import { DocumentScannerTwoTone, Login } from '@mui/icons-material';
 
 
 export default function AccountMenu({setLogin}) {
   const password = 'admin';
-  const [authed, setAuthed] = React.useState(sessionStorage.getItem('authed'));
-  
+  const [authed, setAuthed] = React.useState(false);
   function handleLogin() {
     if(document.getElementById('admPw').value === password){
       setAuthed(true);
-      window.sessionStorage.setItem('authed',true)
-      alert("Welcome in, Mr. Dougal!")
+      alert("Welcome in, Mr. Dougal!");
       document.getElementsByClassName('greetingText')[0].setAttribute('style','display:block');
-      setLogin(true);
     }else{
       alert("Wrong Password!")
     }
+    setLogin(true);
   }
   function handleLogout() {
-    setLogin(false);
     setAuthed(false);
-    console.log(authed);
-    window.sessionStorage.setItem('authed', false);
+    setLogin(false);
     document.getElementsByClassName('greetingText')[0].setAttribute('style','display:none');
   }
 
@@ -42,8 +42,7 @@ export default function AccountMenu({setLogin}) {
     setAnchorEl(null);
   };
 
-  if(window.sessionStorage.getItem('authed') === false){
-    
+  if(authed === false){
     return (
       <React.Fragment>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
